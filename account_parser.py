@@ -74,7 +74,7 @@ class AccountParser(object):
 		return digit
 
 	def parse_digit(self, digit):
-		return AccountParser.DIGITS.get(digit,"E")
+		return AccountParser.DIGITS.get(digit,"?")
 
 	
 class InvalidAccountNumberException(Exception):

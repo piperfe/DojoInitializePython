@@ -38,7 +38,7 @@ class TestAccountParser(unittest.TestCase):
 			" _ " +
 			"   ")
 		account_number = AccountParser().parse_digit(input)
-		self.assertEqual(account_number, "E")
+		self.assertEqual(account_number, "?")
 
 
 	def testShouldParseNineDigits(self):
