@@ -50,6 +50,18 @@ class AccountParser(object):
 			"   ")
 	DIGITS = {ZERO : "0", ONE: "1", TWO : "2", THREE : "3", FOUR : "4", FIVE : "5", SIX : "6", SEVEN : "7", EIGHT : "8", NINE : "9"}
 
+
+	ZERO_SIMILIAR = (
+		    "   " +
+			"| |" +
+			"|_|" +
+			"   ")
+	TWO_SIMILIAR = (
+			" _ " +
+			" _|" +
+			" _ " +
+			"   ")
+	SIMILIARDIGIS =  {ZERO_SIMILIAR : "0", TWO_SIMILIAR : "2"}
 	def __init__(self):
 		pass
 
@@ -74,8 +86,13 @@ class AccountParser(object):
 		return digit
 
 	def parse_digit(self, digit):
-		return AccountParser.DIGITS.get(digit,"?")
+		number = AccountParser.DIGITS.get(digit,"?")
+		if(number == "?"):
+			number = self.get_similiar_number(digit)
+		return number
 
+	def get_similiar_number(self, digit):
+		return AccountParser.SIMILIARDIGIS.get(digit,"?")
 	
 class InvalidAccountNumberException(Exception):
 	pass

@@ -2,6 +2,7 @@ import unittest
 from account_validator import AccountValidator
 
 class TestAccountValidator(unittest.TestCase):
+
 	def testShouldBeAValidChecksum(self):
 		input = "000000000"
 		is_valid_account_number = AccountValidator().is_valid_checksum(input)
@@ -35,6 +36,10 @@ class TestAccountValidator(unittest.TestCase):
 	def testShouldReturnILLForAnNonParseableNumber(self):
 		input = "000000?19"
 		self.assertEqual("000000?19 ILL",AccountValidator().validate(input))
+
+	def testShouldReturnILLIFNotPossibleToFixAccountNumber(self):
+		input = "000000??9"
+		self.assertEqual("000000??9 ILL",AccountValidator().validate(input))
 	
 	def testShouldReturnERRForParseableNumberButInvalidNumber(self):
 		input = "100000000"

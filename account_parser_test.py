@@ -31,15 +31,23 @@ class TestAccountParser(unittest.TestCase):
 		self.assertEqual(account_number, "2")
 
 
-	def testShouldReturnErrorWhenTheDigitIsInvalid(self):
+	def testShouldReturnNumberTwo(self):
 		input = (
 			" _ " +
 			" _|" +
 			" _ " +
 			"   ")
 		account_number = AccountParser().parse_digit(input)
-		self.assertEqual(account_number, "?")
+		self.assertEqual(account_number, "2")
 
+	def testShouldReturnNumberZero(self):
+		input = (
+			"   " +
+			"| |" +
+			"|_|" +
+			"   ")
+		account_number = AccountParser().parse_digit(input)
+		self.assertEqual(account_number, "0")
 
 	def testShouldParseNineDigits(self):
 		input = (
